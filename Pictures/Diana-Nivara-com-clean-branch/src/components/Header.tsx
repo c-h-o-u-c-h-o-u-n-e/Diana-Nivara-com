@@ -12,7 +12,6 @@ const navigationItems = [
 
 // Navigation items for small mobile view (425px and less)
 const mobileSmallNavigationItems = [
-  { name: 'Home', path: '/' },
   { name: 'Gallery', path: '/gallery' },
   { name: 'Rates', path: '/rates' },
   { name: 'Essentials', path: '/essentials' },
@@ -344,10 +343,25 @@ export default function Header() {
                     onClick={() => {
                       setMobileMenuOpen(false);
                       // Smooth scroll to the section
-                      const section = document.getElementById(sectionId);
-                      if (section) {
-                        section.scrollIntoView({ behavior: 'smooth' });
-                      }
+                      setTimeout(() => {
+                        const section = document.getElementById(sectionId);
+                        if (section) {
+                          // Account for header height (80px) + section padding-top (40px) + title margin-top (24px) = 144px
+                          // Subtract an additional 200px to scroll further down as requested
+                          const elementPosition = section.getBoundingClientRect().top;
+                          const headerHeight = 80; // header height on mobile
+                          const sectionPadding = 40; // padding-top from .section
+                          const titleMargin = 24; // marginTop from CommonSectionTitle
+                          const additionalOffset = 200; // Additional scroll down as requested
+                          const totalOffset = headerHeight + sectionPadding + titleMargin - additionalOffset;
+                          const offsetPosition = elementPosition + window.pageYOffset - totalOffset;
+                          
+                          window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                          });
+                        }
+                      }, 100); // Small delay to ensure menu closes first
                     }}
                   >
                     {item.name}

@@ -108,7 +108,7 @@ export default function EntryModal({ onAccept }: EntryModalProps) {
             fontWeight: 'var(--font-heading-weight-medium)',
             letterSpacing: 'var(--font-heading-letter-spacing)',
             color: 'var(--color-text-primary)',
-            fontSize: '3.5rem',
+            fontSize: 'clamp(2.5rem, 8vw, 3.5rem)',
             lineHeight: '1.2',
             marginBottom: 'var(--spacing-6)',
           }}
@@ -123,12 +123,13 @@ export default function EntryModal({ onAccept }: EntryModalProps) {
             fontFamily: 'var(--font-body)',
             fontWeight: 'var(--font-body-weight-regular)',
             color: 'var(--color-text-primary)',
-            fontSize: '1.125rem',
+            fontSize: 'clamp(1rem, 3vw, 1.125rem)',
             lineHeight: '1.6',
             marginBottom: 'var(--spacing-8)',
             maxWidth: '480px',
             marginLeft: 'auto',
             marginRight: 'auto',
+            padding: '0 var(--spacing-4)',
           }}
         >
           It's a pleasure to have you here.
@@ -149,14 +150,14 @@ export default function EntryModal({ onAccept }: EntryModalProps) {
           style={{
             display: 'inline-block',
             height: '52px',
-            padding: '0 36px',
+            padding: '0 clamp(24px, 6vw, 36px)',
             backgroundColor: 'var(--color-accent)',
             color: 'var(--color-bg-primary)',
             fontFamily: 'var(--font-button)',
             fontWeight: 'var(--font-button-weight)',
             textTransform: 'var(--font-button-transform)',
             letterSpacing: 'var(--font-button-letter-spacing)',
-            fontSize: '16px',
+            fontSize: 'clamp(14px, 3vw, 16px)',
             border: 'none',
             borderRadius: '28px',
             textDecoration: 'none',
@@ -164,7 +165,8 @@ export default function EntryModal({ onAccept }: EntryModalProps) {
             transition: 'background-color var(--transition-hover)',
             lineHeight: '52px',
             textAlign: 'center',
-            minWidth: '220px',
+            minWidth: 'clamp(180px, 50vw, 220px)',
+            maxWidth: '90%',
             outline: 'none',
           }}
           onMouseEnter={(e) => {
@@ -181,7 +183,7 @@ export default function EntryModal({ onAccept }: EntryModalProps) {
           }}
           aria-label="Confirm you are 18 years or older and enter the site"
         >
-          Book Our Time Together
+          Step Inside
         </Link>
       </div>
 
