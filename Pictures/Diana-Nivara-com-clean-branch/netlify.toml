@@ -1,6 +1,7 @@
 [build]
+  base = "Pictures/Diana-Nivara-com-clean-branch"
   command = "npm run build"
-  publish = "dist"
+  publish = "Pictures/Diana-Nivara-com-clean-branch/dist"
 
 [build.environment]
   # Add any build-time environment variables here
