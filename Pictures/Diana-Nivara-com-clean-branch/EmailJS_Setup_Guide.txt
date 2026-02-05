@@ -1,0 +1,224 @@
+# EmailJS Setup Guide for Booking and Contact Form Notifications
+
+## Overview
+This guide will help you set up EmailJS to receive email notifications when users submit the booking form or contact form on your website.
+
+## What Has Been Implemented
+
+✅ EmailJS package installed (@emailjs/browser)
+✅ EmailJS service integration created (src/lib/emailjs.ts)
+✅ Booking form updated to send notifications
+✅ Contact form updated to send notifications
+✅ Environment variables configured
+✅ Optional client confirmation emails supported
+
+## Step-by-Step Setup Instructions
+
+### 1. Create EmailJS Account
+1. Go to https://www.emailjs.com/
+2. Sign up for a free account (allows 200 emails/month)
+3. Verify your email address
+
+### 2. Set Up Email Service
+1. In EmailJS dashboard, go to "Email Services"
+2. Click "Add New Service"
+3. Choose your email provider (Gmail, Outlook, etc.)
+4. Follow the setup instructions for your provider
+5. Note down the SERVICE ID (you'll need this later)
+
+### 3. Create Email Templates
+
+You need to create 2-3 email templates:
+
+#### A. Booking Notification Template
+1. Go to "Email Templates" in EmailJS dashboard
+2. Click "Create New Template"
+3. Template Name: "Booking Notification"
+4. Use this template content:
+
+Subject: New Booking Inquiry from {{client_name}}
+
+Hello,
+
+You have received a new booking inquiry:
+
+CLIENT DETAILS:
+- Name: {{client_name}}
+- Age: {{client_age}}
+- Email: {{client_email}}
+- Phone: {{client_phone}}
+
+BOOKING DETAILS:
+- Experience Type: {{experience_type}}
+- Duration: {{duration}}
+- Preferred Date: {{preferred_date}}
+- Time Window: {{time_window}}
+- Outcall Location: {{outcall_location}}
+- Couple Booking: {{is_couple}}
+- Social Hours: {{social_hours}}
+
+ABOUT CLIENT:
+{{about_client}}
+
+Submitted: {{submission_date}}
+
+Reply to: {{client_email}}
+
+5. Save the template and note the TEMPLATE ID
+
+#### B. Contact Form Notification Template
+1. Create another template
+2. Template Name: "Contact Form Message"
+3. Use this template content:
+
+Subject: New Contact Message from {{client_name}}
+
+Hello,
+
+You have received a new contact form message:
+
+FROM: {{client_name}} ({{client_email}})
+SUBMITTED: {{submission_date}}
+
+MESSAGE:
+{{message}}
+
+Reply to: {{client_email}}
+
+4. Save and note the TEMPLATE ID
+
+#### C. Client Confirmation Template (Optional)
+1. Create a third template for client confirmations
+2. Template Name: "Booking Confirmation"
+3. Use this template content:
+
+Subject: Thank you for your booking inquiry
+
+Dear {{client_name}},
+
+Thank you for your booking inquiry. I have received your request for:
+
+- Experience Type: {{experience_type}}
+- Duration: {{duration}}
+- Preferred Date: {{preferred_date}}
+
+I will review your inquiry and respond within 24 hours.
+
+Best regards,
+[Your Name]
+
+4. Save and note the TEMPLATE ID
+
+### 4. Get Your EmailJS Credentials
+
+From your EmailJS dashboard, collect these values:
+- Public Key: Go to "Account" → "General" → "Public Key"
+- Service ID: From the service you created
+- Template IDs: From each template you created
+
+### 5. Update Environment Variables
+
+1. Open your .env file (NOT .env.example)
+2. Add these EmailJS variables:
+
+```
+# EmailJS Integration for Form Notifications
+VITE_EMAILJS_PUBLIC_KEY=rmCMxAjEuWQKfB51Q
+VITE_EMAILJS_SERVICE_ID=service_4znvnz9
+VITE_EMAILJS_BOOKING_TEMPLATE_ID=template_4zn5cnv
+VITE_EMAILJS_CONTACT_TEMPLATE_ID=template_y435lc5
+VITE_NOTIFICATION_EMAIL=connect@diananivara.com
+```
+
+3. Replace all placeholder values with your actual EmailJS credentials
+4. Set VITE_NOTIFICATION_EMAIL to the email where you want to receive notifications
+
+### 6. Test the Setup
+
+1. Restart your development server: `npm run dev`
+2. Go to your website
+3. Fill out and submit the booking form
+4. Fill out and submit the contact form
+5. Check your email for notifications
+
+### 7. Troubleshooting
+
+#### Common Issues:
+
+**"Email service not configured" error:**
+- Check that all environment variables are set correctly
+- Make sure you restarted the dev server after adding variables
+- Verify the variable names match exactly (case-sensitive)
+
+**Emails not being received:**
+- Check your spam/junk folder
+- Verify the VITE_NOTIFICATION_EMAIL is correct
+- Check EmailJS dashboard for error logs
+- Make sure your email service is properly connected in EmailJS
+
+**Template variables not showing:**
+- Ensure template variable names match exactly ({{client_name}}, etc.)
+- Check for typos in template variable names
+- Variables are case-sensitive
+
+#### Testing in Development:
+- EmailJS works in development mode
+- Check browser console for any error messages
+- Use browser network tab to see if requests are being sent
+
+#### Production Deployment:
+- Environment variables need to be set in your hosting platform
+- For Netlify: Set variables in Site Settings → Environment Variables
+- For Vercel: Set variables in Project Settings → Environment Variables
+
+### 8. EmailJS Limits
+
+**Free Plan:**
+- 200 emails per month
+- 2 email services
+- 2 email templates per service
+
+**Paid Plans:**
+- Higher email limits
+- More services and templates
+- Priority support
+
+### 9. Security Notes
+
+- Never commit your actual .env file to version control
+- Keep your EmailJS credentials secure
+- The public key is safe to use in frontend code
+- Service ID and Template IDs are also safe for frontend use
+
+### 10. Optional Enhancements
+
+**Email Styling:**
+- EmailJS supports HTML templates for better formatting
+- You can add CSS styling to make emails look more professional
+
+**Additional Notifications:**
+- Set up multiple notification emails
+- Add SMS notifications (requires additional service)
+- Integrate with Slack or Discord webhooks
+
+**Analytics:**
+- Track email open rates
+- Monitor form submission success rates
+- Set up alerts for failed email deliveries
+
+## Support
+
+If you encounter issues:
+1. Check EmailJS documentation: https://www.emailjs.com/docs/
+2. Review browser console for error messages
+3. Check EmailJS dashboard for delivery logs
+4. Verify all environment variables are set correctly
+
+## Summary
+
+Once set up correctly, you will receive email notifications for:
+- ✅ Booking form submissions (with all booking details)
+- ✅ Contact form messages
+- ✅ Optional confirmation emails sent to clients
+
+The system is now ready to handle real form submissions and send professional email notifications!
