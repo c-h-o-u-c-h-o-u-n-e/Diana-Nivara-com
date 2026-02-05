@@ -224,7 +224,7 @@ export default function MeetSection({
           }
           
           .meet-text-column img[src*="Signature.png"] {
-            height: 100px !important; /* 50% smaller than the original 200px */
+            height: 125px !important; /* 25% larger than 100px for screens smaller than 426px */
             padding-left: 0px !important; /* Remove left padding for center alignment */
             object-position: center center !important; /* Center the signature */
           }

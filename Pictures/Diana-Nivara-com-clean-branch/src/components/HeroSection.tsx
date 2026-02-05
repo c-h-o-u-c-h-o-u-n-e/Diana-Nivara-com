@@ -132,7 +132,8 @@ export default function HeroSection({
         aria-label="Navigate to booking page"
         className="hero-cta-button"
       >
-        Book Our Time Together
+        <span className="book-text-full">Book Our Time Together</span>
+        <span className="book-text-short">Book Me</span>
       </Link>
 
       {/* Responsive Styles */}
@@ -198,6 +199,26 @@ export default function HeroSection({
         @media (max-width: 425px) {
           .hero-section {
             display: none !important;
+          }
+        }
+        
+        /* Book text responsive display */
+        .book-text-short {
+          display: none;
+        }
+        
+        .book-text-full {
+          display: inline;
+        }
+        
+        /* Show short text for screens smaller than 384px */
+        @media (max-width: 383px) {
+          .book-text-full {
+            display: none;
+          }
+          
+          .book-text-short {
+            display: inline;
           }
         }
         

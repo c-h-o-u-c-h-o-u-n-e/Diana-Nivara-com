@@ -139,7 +139,8 @@ export default function ProfileSidebarContent() {
               aria-label="Navigate to booking page"
               className="profile-box-cta"
             >
-              Book Our Time Together
+              <span className="book-text-full">Book Our Time Together</span>
+              <span className="book-text-short">Book Me</span>
             </Link>
           </div>
         </div>
@@ -152,6 +153,26 @@ export default function ProfileSidebarContent() {
           .profile-box-data-column > div > div:nth-child(7) > span:nth-child(2),
           .profile-box-data-column > div > div:nth-child(13) > span:nth-child(2) {
             white-space: nowrap !important;
+          }
+        }
+        
+        /* Book text responsive display */
+        .book-text-short {
+          display: none;
+        }
+        
+        .book-text-full {
+          display: inline;
+        }
+        
+        /* Show short text for screens smaller than 384px */
+        @media (max-width: 383px) {
+          .book-text-full {
+            display: none;
+          }
+          
+          .book-text-short {
+            display: inline;
           }
         }
         

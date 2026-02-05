@@ -492,7 +492,8 @@ const MobileLandingPage: React.FC = () => {
               aria-label="Navigate to booking page"
               className="profile-box-cta"
             >
-              Book Our Time Together
+              <span className="book-text-full">Book Our Time Together</span>
+              <span className="book-text-short">Book Me</span>
             </Link>
           </div>
         </div>
@@ -542,6 +543,26 @@ const MobileLandingPage: React.FC = () => {
         
         .book-button:hover {
           background-color: var(--color-accent-hover);
+        }
+        
+        /* Book text responsive display */
+        .book-text-short {
+          display: none;
+        }
+        
+        .book-text-full {
+          display: inline;
+        }
+        
+        /* Show short text for screens smaller than 384px */
+        @media (max-width: 383px) {
+          .book-text-full {
+            display: none;
+          }
+          
+          .book-text-short {
+            display: inline;
+          }
         }
         
         /* Mobile - ≤425px */

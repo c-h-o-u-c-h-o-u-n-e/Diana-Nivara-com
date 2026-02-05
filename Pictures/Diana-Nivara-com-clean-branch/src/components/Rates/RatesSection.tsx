@@ -22,12 +22,19 @@ const RatesSection = React.memo(({ title, price, description, options, basePrice
             }
           }
           
-          @media (max-width: 425px) {
+          @media (max-width: 424px) {
             .rates-section-line-before {
               width: 20px !important;
+              margin-right: 16px !important;
             }
             .rates-section-line-after {
-              margin-left: 26px !important;
+              margin-left: 16px !important;
+              flex: 1 !important;
+            }
+            .rates-section-title-container {
+              display: flex !important;
+              align-items: center !important;
+              justify-content: center !important;
             }
           }
           
