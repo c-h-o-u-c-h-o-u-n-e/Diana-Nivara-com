@@ -423,6 +423,7 @@ export default function Footer() {
                       style={{
                         height: '48px',
                         padding: '0 24px',
+                        paddingRight: '50px',
                         backgroundColor: 'var(--color-accent)',
                         color: 'var(--color-bg-primary)',
                         fontFamily: 'var(--font-button)',
@@ -439,6 +440,9 @@ export default function Footer() {
                         transition: 'background-color var(--transition-hover)',
                         opacity: 1,
                         whiteSpace: 'nowrap',
+                        position: 'relative',
+                        zIndex: 1,
+                        marginRight: '-10px',
                       }}
                     >
                       <span style={{ position: 'relative' }}>
@@ -451,68 +455,74 @@ export default function Footer() {
                         position: 'relative',
                         flex: 1,
                         height: '48px',
+                        zIndex: 2,
+                        marginLeft: '-30px',
                       }}
                     >
-                      <input
-                        ref={emailInputRef}
-                        type="email"
-                        value={email}
-                        onChange={(e) => {
-                          setEmail(e.target.value);
-                          setError('');
-                        }}
-                        placeholder="Enter your email here"
-                        required
-                        disabled={isAnimating || showThankYou}
-                        style={{
-                          width: '100%',
-                          height: '100%',
-                          padding: '0 16px',
-                          fontFamily: 'var(--font-body)',
-                          fontSize: '17px',
-                          color: 'var(--color-text-primary)',
-                          opacity: showThankYou ? '0' : '100%',
-                          backgroundColor: 'transparent',
-                          border: 'none',
-                          borderTop: '4px solid var(--color-accent)',
-                          borderBottom: '4px solid var(--color-accent)',
-                          borderRadius: '0px',
-                          outline: 'none',
-                          position: 'relative',
-                          zIndex: 0,
-                        }}
-                        onFocus={(e) => {
-                          // Always keep border color as accent with 100% opacity
-                          e.currentTarget.style.borderColor = 'var(--color-accent)';
-                          e.currentTarget.classList.remove('placeholder-visible');
-                          e.currentTarget.classList.add('placeholder-hidden');
-                        }}
-                        onBlur={(e) => {
-                          // Always keep border color as accent with 100% opacity
-                          e.currentTarget.style.borderColor = 'var(--color-accent)';
-                          if (!e.currentTarget.value) {
-                            e.currentTarget.classList.remove('placeholder-hidden');
-                            e.currentTarget.classList.add('placeholder-visible');
-                          }
-                        }}
-                      />
+                      <div style={{
+                        position: 'relative',
+                        width: '100%',
+                        height: '100%',
+                        background: 'var(--color-accent)',
+                        borderRadius: '12px',
+                        padding: '4px',
+                        paddingLeft: '-0px',
+                      }}>
+                        <input
+                          ref={emailInputRef}
+                          type="email"
+                          value={email}
+                          onChange={(e) => {
+                            setEmail(e.target.value);
+                            setError('');
+                          }}
+                          placeholder="Enter your email here"
+                          required
+                          disabled={isAnimating || showThankYou}
+                          style={{
+                            width: '100%',
+                            height: '100%',
+                            padding: '0 16px',
+                            fontFamily: 'var(--font-body)',
+                            fontSize: '17px',
+                            color: 'var(--color-text-primary)',
+                            opacity: showThankYou ? '0' : '100%',
+                            backgroundColor: 'var(--color-bg-primary)',
+                            border: 'none',
+                            borderRadius: '8px',
+                            outline: 'none',
+                            position: 'relative',
+                            zIndex: 0,
+                          }}
+                          onFocus={(e) => {
+                            e.currentTarget.classList.remove('placeholder-visible');
+                            e.currentTarget.classList.add('placeholder-hidden');
+                          }}
+                          onBlur={(e) => {
+                            if (!e.currentTarget.value) {
+                              e.currentTarget.classList.remove('placeholder-hidden');
+                              e.currentTarget.classList.add('placeholder-visible');
+                            }
+                          }}
+                        />
+                      </div>
                       
                       {/* Thank you message that appears after animation */}
                       {showThankYou && (
                         <div
                           style={{
                             position: 'absolute',
-                            top: 0,
-                            left: 0,
-                            width: '100%',
-                            height: '100%',
+                            top: '4px',
+                            left: '4px',
+                            width: 'calc(100% - 8px)',
+                            height: 'calc(100% - 8px)',
                             display: 'flex',
                             alignItems: 'center',
                             paddingLeft: '16px',
                             zIndex: 2,
                             pointerEvents: 'none',
-                            borderTop: '4px solid var(--color-accent)',
-                            borderBottom: '4px solid var(--color-accent)',
+                            backgroundColor: 'var(--color-bg-primary)',
+                            borderRadius: '8px',
                           }}
                         >
                           <p
@@ -568,6 +578,8 @@ export default function Footer() {
                         whiteSpace: 'nowrap',
                         position: 'relative',
                         overflow: 'hidden',
+                        marginLeft: '-10px',
+                        zIndex: 1,
                       }}
                     >
                       {showConfetti && (

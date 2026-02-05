@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 interface EntryModalProps {
   onAccept: () => void;
@@ -136,7 +137,8 @@ export default function EntryModal({ onAccept }: EntryModalProps) {
         </p>
 
         {/* CTA Button */}
-        <button
+        <Link
+          to="/"
           id="entry-modal-cta"
           onClick={handleAccept}
           onKeyDown={(e) => {
@@ -145,22 +147,25 @@ export default function EntryModal({ onAccept }: EntryModalProps) {
             }
           }}
           style={{
+            display: 'inline-block',
             height: '52px',
-            minWidth: '220px',
-            padding: '0 var(--spacing-4)',
+            padding: '0 36px',
             backgroundColor: 'var(--color-accent)',
             color: 'var(--color-bg-primary)',
             fontFamily: 'var(--font-button)',
             fontWeight: 'var(--font-button-weight)',
             textTransform: 'var(--font-button-transform)',
             letterSpacing: 'var(--font-button-letter-spacing)',
-            fontSize: '0.875rem',
+            fontSize: '16px',
             border: 'none',
-            borderRadius: '0',
+            borderRadius: '28px',
+            textDecoration: 'none',
             cursor: 'pointer',
             transition: 'background-color var(--transition-hover)',
-            position: 'relative',
-            top: '-2px',
+            lineHeight: '52px',
+            textAlign: 'center',
+            minWidth: '220px',
+            outline: 'none',
           }}
           onMouseEnter={(e) => {
             e.currentTarget.style.backgroundColor = 'var(--color-accent-hover)';
@@ -176,8 +181,8 @@ export default function EntryModal({ onAccept }: EntryModalProps) {
           }}
           aria-label="Confirm you are 18 years or older and enter the site"
         >
-          Step Inside
-        </button>
+          Book Our Time Together
+        </Link>
       </div>
 
       {/* Keyframe animation styles injected inline */}

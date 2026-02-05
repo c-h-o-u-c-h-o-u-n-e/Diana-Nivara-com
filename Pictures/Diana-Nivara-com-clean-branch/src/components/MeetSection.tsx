@@ -138,10 +138,11 @@ export default function MeetSection({
                 src="images/Signature.png"
                 alt="Diana Nivara Signature"
                 style={{
-                  height: '200px',
+                  height: '150px',
                   objectFit: 'contain',
                   objectPosition: 'center center',
                   paddingRight: '0px',
+                    marginTop: '40px',
                 }}
               />
             </div>

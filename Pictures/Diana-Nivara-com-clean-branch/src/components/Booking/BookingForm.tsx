@@ -979,7 +979,7 @@ const BookingForm: React.FC<BookingFormProps> = React.memo(({
         }
       `}</style>
       
-      {/* Submit Button */}
+      {/* Submit Button - Styled like Hero CTA */}
       <div style={{ 
         textAlign: 'center',
         marginBottom: '32px',
@@ -988,32 +988,39 @@ const BookingForm: React.FC<BookingFormProps> = React.memo(({
         <button
           type="submit"
           style={{
-            width: '100%',
-            maxWidth: '320px',
-            height: '48px',
-            backgroundColor: 'rgba(196, 135, 135, 0.3)',
-            color: 'var(--color-text-primary)',
-            fontFamily: 'var(--font-body)',
-            fontWeight: 'normal',
-            fontSize: '18px',
-            border: '1px solid var(--color-border)',
-            borderRadius: '20px',
+            display: 'inline-block',
+            height: '52px',
+            padding: '0 36px',
+            backgroundColor: 'var(--color-accent)',
+            color: 'var(--color-bg-primary)',
+            fontFamily: 'var(--font-button)',
+            fontWeight: 'var(--font-button-weight)',
+            textTransform: 'var(--font-button-transform)',
+            letterSpacing: 'var(--font-button-letter-spacing)',
+            fontSize: '16px',
+            border: 'none',
+            borderRadius: '28px',
             cursor: 'pointer',
-            transition: 'all 0.2s ease',
-            textTransform: 'uppercase',
-            letterSpacing: 'normal',
+            transition: 'background-color var(--transition-hover)',
+            lineHeight: '52px',
+            textAlign: 'center',
+            minWidth: '220px',
           }}
           onMouseEnter={(e) => {
-            e.currentTarget.style.backgroundColor = 'rgba(196, 135, 135, 0.6)';
-            e.currentTarget.style.borderColor = 'var(--color-accent)';
+            e.currentTarget.style.backgroundColor = 'var(--color-accent-hover)';
           }}
           onMouseLeave={(e) => {
-            e.currentTarget.style.backgroundColor = 'rgba(196, 135, 135, 0.3)';
-            e.currentTarget.style.borderColor = 'var(--color-border)';
+            e.currentTarget.style.backgroundColor = 'var(--color-accent)';
+          }}
+          onMouseDown={(e) => {
+            e.currentTarget.style.backgroundColor = 'var(--color-accent-active)';
+          }}
+          onMouseUp={(e) => {
+            e.currentTarget.style.backgroundColor = 'var(--color-accent-hover)';
           }}
           aria-label="Submit booking inquiry"
         >
-          {isPending ? 'Submitting...' : 'Submit'}
+          {isPending ? 'Submit' : 'Submit'}
         </button>
       </div>
 

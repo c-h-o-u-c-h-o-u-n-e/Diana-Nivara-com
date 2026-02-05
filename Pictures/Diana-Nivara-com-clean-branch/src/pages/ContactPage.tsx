@@ -400,7 +400,7 @@ const ContactPage: React.FC = () => {
                 }
               }}
             >
-              {isPending ? 'Sending...' : 'Send Message'}
+              {isPending ? 'Send Message' : 'Send Message'}
             </button>
           </div>
         </form>
